@@ -1,2 +1,4 @@
 [url01]
 https://github.com/Cloud-based-Dipo/cdond-c3-projectstarter
+
+[url02] // for public URL of s3 bucket
