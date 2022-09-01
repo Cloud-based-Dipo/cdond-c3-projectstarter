@@ -131,6 +131,7 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
               --output text) >> ~/project/.circleci/ansible/inventory.txt
+              cat ~/project/.circleci/ansible/inventory.txt
         - persist_to_workspace:
             root: ~/
             paths:
@@ -144,7 +145,7 @@ jobs:
         - checkout
         - add_ssh_keys:
             fingerprints:
-              - "4d:f6:35:64:c2:64:4e:5f:8f:82:c9:d0:06:b6:60:6f"
+              - "98:43:44:12:42:f0:6d:95:40:05:29:26:75:25:f7:ce"
         - run:
             name: Install dependencies
             command: |
@@ -155,7 +156,8 @@ jobs:
             name: Configure server
             command: |
               # add environment variables to server
-              echo NODE_ENV=production > ~/project/backend/.env
+              echo ENVIRONMENT=production > ~/project/backend/.env
+              echo NODE_ENV=production >> ~/project/backend/.env
               echo TYPEORM_CONNECTION=$TYPEORM_CONNECTION >> ~/project/backend/.env
               echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> ~/project/backend/.env
               echo TYPEORM_ENTITIES=$TYPEORM_ENTITIES >> ~/project/backend/.env
