@@ -369,6 +369,10 @@ jobs:
 
             echo OldWorkflowID: "${OldWorkflowID}"
             echo Current WorkflowID: "${CIRCLE_WORKFLOW_ID:0:7}"
+      - persist_to_workspace:
+            root: ~/
+            paths:
+              - inventory.txt
       - destroy-environment:
           workflow-id: "${CIRCLE_WORKFLOW_ID:0:7}"
       - revert-migrations:
@@ -379,6 +383,8 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/
       - run:
           name: Get old stack workflow id
           command: |
