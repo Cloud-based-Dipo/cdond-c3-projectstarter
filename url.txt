@@ -2,3 +2,4 @@
 https://github.com/Cloud-based-Dipo/cdond-c3-projectstarter
 
 [url02] // for public URL of s3 bucket
+http://udapeople-4bb4a3f.s3-website-us-east-1.amazonaws.com/#/employees
